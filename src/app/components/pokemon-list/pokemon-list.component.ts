@@ -31,7 +31,7 @@ export class PokemonListComponent implements OnInit {
       offset: this.offset,
       limit: this.limit
     };
-    this.pokemonService.getList(params).subscribe(
+    this.pokemonService.getAll(params).subscribe(
       data => (this.pokemons = data),
       error => (console.log(error))
     );

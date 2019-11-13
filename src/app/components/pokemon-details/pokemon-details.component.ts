@@ -22,7 +22,7 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   loadData(id: number) {
-    this.pokemonService.getPokemon(id).subscribe(
+    this.pokemonService.get(id).subscribe(
       data => {
         this.pokemon = data;
         console.log(this.pokemon);

@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TypeComponent implements OnInit {
 
-  @Input() pokemonType: TypeModel;
+  @Input() type: string;
 
   constructor() { }
 

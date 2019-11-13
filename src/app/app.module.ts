@@ -10,6 +10,11 @@ import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-de
 import { AppRoutingModule } from './app-routing.module';
 import { TypeComponent } from './components/info/type/type.component';
 import { SpritesComponent } from './components/info/sprites/sprites.component';
+import { MoveComponent } from './components/info/move/move.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { MovesComponent } from './components/info/moves/moves.component';
+
 
 @NgModule({
   declarations: [
@@ -18,12 +23,16 @@ import { SpritesComponent } from './components/info/sprites/sprites.component';
     PokemonComponent,
     PokemonDetailsComponent,
     TypeComponent,
-    SpritesComponent
+    SpritesComponent,
+    MoveComponent,
+    MovesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

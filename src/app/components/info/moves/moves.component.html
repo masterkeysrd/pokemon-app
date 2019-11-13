@@ -1,0 +1,14 @@
+<div class="card mb-3" >
+    <div class="card-header bg-primary text-white">Moves</div>
+    <div class="card-body">
+        <div class="row">
+            <ng-container *ngFor="let move of getMoves()">
+                <lx-move class="col-md-2 mt-4" [name]="move.name"></lx-move>
+            </ng-container>
+            <div class="d-flex justify-content-center p-2 col-md-12">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+                </ngb-pagination>
+              </div>
+        </div>
+    </div>
+  </div>

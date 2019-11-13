@@ -1,0 +1,8 @@
+<ng-container *ngIf="move">
+    <div class="card">
+        <div class="card-body">
+            {{move.name | titlecase}} <br>
+            <strong>Type: </strong><lx-type [type]="move.type">{{move.type}}</lx-type>
+        </div>
+      </div>
+</ng-container>

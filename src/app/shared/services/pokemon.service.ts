@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PokemonDetailsModel } from '../models/pokemon-details.model';
+import { MoveModel } from '../models/move.model';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
@@ -15,7 +16,7 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getList(query: any) {
+  getAll(query: any) {
     return this.http.get(`${BASE_URL}/pokemon`, {params: query})
     .pipe(
       map((res: any) => res.results
@@ -26,7 +27,7 @@ export class PokemonService {
     ));
   }
 
-  getPokemon(id: number): Observable<PokemonDetailsModel> {
+  get(id: number): Observable<PokemonDetailsModel> {
     return this.http.get<PokemonDetailsModel>(`${BASE_URL}/pokemon/${id}`)
     .pipe(
       map((res: any) => {
@@ -38,8 +39,23 @@ export class PokemonService {
           };
           return type;
         });
+        const moves = res.moves.map(move => {
+          return move.move;
+        });
 
+        res.moves = moves;
         res.types = types;
+        return res;
+      })
+    );
+  }
+
+  getMove(move: string): Observable<MoveModel> {
+    return this.http.get<MoveModel>(`${BASE_URL}/move/${move}`)
+    .pipe(
+      map((res: any) => {
+        res.name = res.name.replace('-', ' ');
+        res.type = res.type.name;
         return res;
       })
     );
