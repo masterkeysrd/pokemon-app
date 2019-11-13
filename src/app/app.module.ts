@@ -14,6 +14,7 @@ import { MoveComponent } from './components/info/move/move.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MovesComponent } from './components/info/moves/moves.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MovesComponent } from './components/info/moves/moves.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    InfiniteScrollModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

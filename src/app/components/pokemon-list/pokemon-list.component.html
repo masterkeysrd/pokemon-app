@@ -1,6 +1,8 @@
-<div class="fluid-container">
-    <div class="row">
-        <lx-pokemon class="col-md-2 mt-4" *ngFor="let item of pokemons" [pokemon]="item"></lx-pokemon>
+<div class="search-results"  infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance"
+[infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()">
+    <div class="fluid-container">
+        <div class="row">
+            <lx-pokemon class="col-md-2 mt-4" *ngFor="let item of pokemons" [pokemon]="item"></lx-pokemon>
+        </div>
     </div>
 </div>
- 
