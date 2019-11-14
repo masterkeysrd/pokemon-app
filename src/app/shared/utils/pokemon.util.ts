@@ -1,8 +1,10 @@
 import { Sprite } from './sprites';
 import { SpritesModel } from './../models/sprites.model';
 export class PokemonUtil {
+
   static getImageUrl(id: number): string {
-    return `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+    // return `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
   }
 
   static getSpriteList(sprites: SpritesModel): Array<Sprite>  {
@@ -19,7 +21,7 @@ export class PokemonUtil {
   }
 
   static getSpriteName(spriteName: string): string {
-    return spriteName.replace('_', ' ');
+    return spriteName.replace('_', ' ').replace('-', '');
   }
 
   static getSpriteComparator() {
@@ -46,5 +48,9 @@ export class PokemonUtil {
         return 1;
       }
     };
+  }
+
+  static getIdFromUr(url: string): number {
+    return Number(url.split('/')[6]);
   }
 }

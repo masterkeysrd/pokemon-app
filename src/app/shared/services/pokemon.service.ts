@@ -1,3 +1,4 @@
+import { PokemonUtil } from './../utils/pokemon.util';
 import { PokemonModel } from './../models/pokemon.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -5,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PokemonDetailsModel } from '../models/pokemon-details.model';
 import { MoveModel } from '../models/move.model';
+import { SpeciesModel } from '../models/species.model';
+import { ChainModel } from '../models/chain.model';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
@@ -20,7 +23,7 @@ export class PokemonService {
     .pipe(
       map((res: any) => res.results
       .map((pokemon: PokemonModel) => {
-        pokemon.id = Number(pokemon.url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', ''));
+        pokemon.id = PokemonUtil.getIdFromUr(pokemon.url);
         return pokemon;
       })
     ));
@@ -69,5 +72,24 @@ export class PokemonService {
         return res;
       })
     );
+  }
+
+  getSpecies(especies: string): Observable<SpeciesModel> {
+    return this.http.get<SpeciesModel>(`${BASE_URL}/pokemon-species/${especies}`)
+    .pipe(
+      map((res: any) => {
+        res.evolution_chain_id = PokemonUtil.getIdFromUr(res.evolution_chain.url);
+        return res;
+      }
+    ));
+  }
+
+  getEvolutionChain(id: number): Observable<ChainModel> {
+    return this.http.get<ChainModel>(`${BASE_URL}/evolution-chain/${id}`)
+    .pipe(
+      map((res: any) => {
+        return res.chain;
+      }
+    ));
   }
 }

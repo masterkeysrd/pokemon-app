@@ -22,6 +22,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CardComponent } from './components/util/card/card.component';
+import { EvolutionChainComponent } from './components/info/evolution-chain/evolution-chain.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { CardComponent } from './components/util/card/card.component';
     NavbarComponent,
     StatComponent,
     CardComponent,
+    EvolutionChainComponent
   ],
   imports: [
     BrowserModule,
