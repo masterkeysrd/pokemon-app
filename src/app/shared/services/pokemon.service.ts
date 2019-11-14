@@ -2,7 +2,7 @@ import { PokemonUtil } from './../utils/pokemon.util';
 import { PokemonModel } from './../models/pokemon.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { PokemonDetailsModel } from '../models/pokemon-details.model';
 import { MoveModel } from '../models/move.model';
@@ -18,7 +18,7 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(query: any) {
+  getAll(query: any): Observable<PokemonModel[]> {
     return this.http.get(`${BASE_URL}/pokemon`, {params: query})
     .pipe(
       map((res: any) => res.results
@@ -30,7 +30,7 @@ export class PokemonService {
   }
 
   get(id: number): Observable<PokemonDetailsModel> {
-    return this.http.get<PokemonDetailsModel>(`${BASE_URL}/pokemon/${id}`)
+    return this.http.get<any>(`${BASE_URL}/pokemon/${id}`)
     .pipe(
       map((res: any) => {
         const types = res.types.map(type => {
@@ -64,7 +64,7 @@ export class PokemonService {
   }
 
   getMove(move: string): Observable<MoveModel> {
-    return this.http.get<MoveModel>(`${BASE_URL}/move/${move}`)
+    return this.http.get<any>(`${BASE_URL}/move/${move}`)
     .pipe(
       map((res: any) => {
         res.name = res.name.replace('-', ' ');
@@ -75,7 +75,7 @@ export class PokemonService {
   }
 
   getSpecies(especies: string): Observable<SpeciesModel> {
-    return this.http.get<SpeciesModel>(`${BASE_URL}/pokemon-species/${especies}`)
+    return this.http.get<any>(`${BASE_URL}/pokemon-species/${especies}`)
     .pipe(
       map((res: any) => {
         res.evolution_chain_id = PokemonUtil.getIdFromUr(res.evolution_chain.url);
@@ -85,11 +85,18 @@ export class PokemonService {
   }
 
   getEvolutionChain(id: number): Observable<ChainModel> {
-    return this.http.get<ChainModel>(`${BASE_URL}/evolution-chain/${id}`)
+    return this.http.get<any>(`${BASE_URL}/evolution-chain/${id}`)
     .pipe(
       map((res: any) => {
         return res.chain;
       }
     ));
+  }
+
+  getEvolutionChainBySpecie(name: string): Observable<ChainModel> {
+    return this.getSpecies(name)
+    .pipe(
+      mergeMap(species =>  this.getEvolutionChain(species.evolution_chain_id))
+    );
   }
 }

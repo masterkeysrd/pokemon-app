@@ -22,12 +22,9 @@ export class EvolutionChainComponent implements OnInit {
   }
 
   loadAll() {
-    this.pokemonService.getSpecies(this.species.name)
-    .pipe(mergeMap(species => this.pokemonService.getEvolutionChain(species.evolution_chain_id))
-    )
+    this.pokemonService.getEvolutionChainBySpecie(this.species.name)
     .subscribe(res => {
       this.addEvolution(res);
-      console.log(this.evolutions);
     });
   }
 
