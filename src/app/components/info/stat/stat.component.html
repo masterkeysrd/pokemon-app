@@ -1,7 +1,7 @@
 <div>
-  {{stat.description | titlecase}}
+  {{stat?.description | titlecase}}
   <div class="progress">
-    <div class="progress-bar" [ngClass]="stat.name" role="progressbar" [style.width]="stat.base_stat + '%'" [attr.aria-valuenow]="stat.base_stat" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" [ngClass]="stat.name" role="progressbar" [style.width]="stat?.base_stat + '%'" [attr.aria-valuenow]="stat?.base_stat" aria-valuemin="0" aria-valuemax="100">
       <span><fa-icon [icon]="getIcon()"></fa-icon> {{(stat?.base_stat / 100) | percent}}</span>
     </div>
   </div>

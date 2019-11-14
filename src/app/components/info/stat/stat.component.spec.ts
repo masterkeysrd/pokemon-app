@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatComponent } from './stat.component';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 describe('StatComponent', () => {
   let component: StatComponent;
@@ -8,7 +9,7 @@ describe('StatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatComponent ]
+      declarations: [ StatComponent, FaIconComponent ]
     })
     .compileComponents();
   }));
@@ -16,6 +17,13 @@ describe('StatComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StatComponent);
     component = fixture.componentInstance;
+    component.stat = {
+      base_stat: 10,
+      description: 'none',
+      effort: 0,
+      name: 'none',
+      url: 'none'
+    };
     fixture.detectChanges();
   });
 

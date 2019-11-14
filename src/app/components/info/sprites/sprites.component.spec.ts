@@ -16,6 +16,9 @@ describe('SpritesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SpritesComponent);
     component = fixture.componentInstance;
+    component.sprites = {
+
+    };
     fixture.detectChanges();
   });
 

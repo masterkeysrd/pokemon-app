@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-4 text-center" *ngFor="let item of evolutions">
-      <a [routerLink]="['/pokemon', item.id]" placement="right" [ngbTooltip]="item.name">
-          <img [src]="getImageUrl(item.id)" [alt]="item.name">
-          {{item.name | titlecase}}
+      <a [routerLink]="['/pokemon', item?.id]" placement="right" [ngbTooltip]="item?.name">
+          <img [src]="getImageUrl(item?.id)" [alt]="item?.name">
+          {{item?.name | titlecase}}
       </a>
     </div>
 </div>

@@ -1,3 +1,6 @@
+import { PokemonComponent } from './../pokemon/pokemon.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonListComponent } from './pokemon-list.component';
@@ -8,7 +11,8 @@ describe('PokemonListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonListComponent ]
+      imports: [InfiniteScrollModule, HttpClientTestingModule],
+      declarations: [ PokemonListComponent, PokemonComponent]
     })
     .compileComponents();
   }));
