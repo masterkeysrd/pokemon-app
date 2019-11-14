@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MovesComponent } from './components/info/moves/moves.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     TypeComponent,
     SpritesComponent,
     MoveComponent,
-    MovesComponent
+    MovesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
