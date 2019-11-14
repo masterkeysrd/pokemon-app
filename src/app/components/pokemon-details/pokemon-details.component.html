@@ -1,13 +1,9 @@
 <div class="row mt-5" *ngIf="pokemon">
   <div class="col-md-3">
-    <div class="card">
-        <img [src]="getImageUrl()" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{pokemon.name | titlecase}}</h5>
-            <lx-type *ngFor="let item of pokemon.types" [type]="item.name" class="mr-1"></lx-type>
-          </div>
-      </div>
-      <lx-sprites [sprites]="pokemon.sprites"></lx-sprites>
+    <lx-pokemon [pokemon]="pokemon">
+        <lx-type *ngFor="let item of pokemon.types" [type]="item.name" class="mr-1"></lx-type>
+    </lx-pokemon>
+    <lx-sprites [sprites]="pokemon.sprites"></lx-sprites>
   </div>
   <div class="col-md-9">
     <lx-moves [moves]="pokemon.moves"></lx-moves>

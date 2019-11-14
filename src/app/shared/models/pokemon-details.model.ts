@@ -6,7 +6,7 @@ import { SpritesModel } from './sprites.model';
 import { TypeModel } from './type.model';
 import { PokemonModel } from 'src/app/shared/models/pokemon.model';
 
-export interface PokemonDetailsModel {
+export interface PokemonDetailsModel extends PokemonModel {
     id?: number;
     name?: string;
     abilities?: AbilityModel[];

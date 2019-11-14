@@ -1,5 +1,5 @@
 export interface PokemonModel {
-  id: number;
-  name: string;
-  url: string;
+  id?: number;
+  name?: string;
+  url?: string;
 }
