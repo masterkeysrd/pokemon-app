@@ -1,6 +1,6 @@
 # PokemonApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18. For test Angular concepts using the [PokeApi](https://pokeapi.co/).
 
 ## Development server
 
