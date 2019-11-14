@@ -1,6 +1,6 @@
 <div class="card" (click)="navigateToDetails()">
   <div class="card-header" [style.backgroundColor]='backgroundColor' [style.color]='textColor'>
-    <h5 class="card-title">{{pokemon.name | titlecase}}</h5>
+    <h5 class="card-title"><span class="badge badge-light"  [style.color]='backgroundColor'>#{{pokemon.id | number: '3.'}}</span> {{pokemon.name | titlecase}}</h5>
   </div>
   <div class="card-img-top text-center">
       <img [src]="getImageUrl()" alt="..." class="pokemon-card-img mt-3">

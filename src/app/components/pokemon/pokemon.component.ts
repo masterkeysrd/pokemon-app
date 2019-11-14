@@ -31,7 +31,6 @@ export class PokemonComponent implements OnInit {
   }
 
   getVibrantColor(url: string) {
-    // Using builder
     Vibrant.from(url).getPalette((err, palette) => {
       this.setColor(palette.DarkVibrant);
     });
