@@ -1,4 +1,3 @@
-import { TypeModel } from './../models/type.model';
 import { PokemonModel } from './../models/pokemon.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -42,9 +41,20 @@ export class PokemonService {
         const moves = res.moves.map(move => {
           return move.move;
         });
+        const stats = res.stats.map(stat => {
+          stat = {
+            base_stat: stat.base_stat,
+            effort: stat.effort,
+            name: stat.stat.name,
+            description: stat.stat.name.replace('-', ' '),
+            url: stat.stat.url
+          };
+          return stat;
+        });
 
         res.moves = moves;
         res.types = types;
+        res.stats = stats;
         return res;
       })
     );

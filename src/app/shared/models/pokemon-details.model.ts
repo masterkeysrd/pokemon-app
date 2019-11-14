@@ -1,3 +1,4 @@
+import { StatModel } from './stat.model';
 import { SpeciesModel } from './species.model';
 import { FormModel } from './form.model';
 import { AbilityModel } from './ability.model';
@@ -21,7 +22,7 @@ export interface PokemonDetailsModel extends PokemonModel {
     order?: number;
     species?: SpeciesModel;
     sprites?: SpritesModel;
-    //stats: Stat[];
+    stats?: StatModel[];
     types?: TypeModel[];
     weight?: number;
 }

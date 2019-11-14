@@ -1,6 +1,7 @@
+import { ICON_LYBRARY } from './shared/utils/icons-library';
 import { PokemonService } from './shared/services/pokemon.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,8 +15,13 @@ import { MoveComponent } from './components/info/move/move.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MovesComponent } from './components/info/moves/moves.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { StatComponent } from './components/info/stat/stat.component';
+
+import { NgxLoadingModule } from 'ngx-loading';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { CardComponent } from './components/util/card/card.component';
 
 
 @NgModule({
@@ -28,7 +34,9 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     SpritesComponent,
     MoveComponent,
     MovesComponent,
-    NavbarComponent
+    NavbarComponent,
+    StatComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +44,17 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    InfiniteScrollModule
+    NgxLoadingModule.forRoot({}),
+    InfiniteScrollModule,
+    FontAwesomeModule
   ],
   providers: [PokemonService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(...ICON_LYBRARY);
+  }
+}
