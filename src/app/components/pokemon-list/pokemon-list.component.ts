@@ -43,7 +43,7 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
-  onScrollDown(ev) {
+  onScrollDown(ev?) {
     this.offset += this.limit;
     this.loadAll();
   }
