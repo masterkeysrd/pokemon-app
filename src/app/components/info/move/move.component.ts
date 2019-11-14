@@ -16,11 +16,7 @@ export class MoveComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getMove(this.name).subscribe(
-      res => {
-        this.move = res;
-        console.log(res);
-      }
+      res => (this.move = res)
     );
   }
-
 }
