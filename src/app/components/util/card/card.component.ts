@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() title = '';
+  @Input() headerText = '';
   @Input() backgroundHeaderClass = 'bg-primary';
 
   constructor() { }
