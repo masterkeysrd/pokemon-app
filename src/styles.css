@@ -3,3 +3,8 @@
   font-family: 'PokemonClassic';
   src: url('./assets/fonts/PokemonClassic.ttf')  format('truetype');
 }
+
+@font-face {
+  font-family: 'PokemonText';
+  src: url('./assets/fonts/PokemonHollow.ttf')  format('truetype');
+}
